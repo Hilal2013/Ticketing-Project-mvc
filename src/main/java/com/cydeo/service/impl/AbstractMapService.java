@@ -9,7 +9,7 @@ public abstract class AbstractMapService<T, ID> {//template//I dont need object 
 
     //save where we gonna save?database
     public Map<ID, T> map = new HashMap<>(); //database//we dont have layer date now Im creating by myself
-    //T is value ID(String or Long) is key
+    //T is value; ID(String or Long) is key
     T save(ID id, T object) {
 
         map.put(id, object);
