@@ -16,4 +16,5 @@ public interface CrudService <T,ID> {
     void deleteById(ID username);
 
     void update(T object);
+
 }
