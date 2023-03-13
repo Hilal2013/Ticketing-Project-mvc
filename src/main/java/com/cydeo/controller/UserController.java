@@ -35,7 +35,7 @@ public class UserController {
         return "redirect:/user/create";
     }
 @GetMapping("/update/{username}")
-    public String editUser(Model model, @PathVariable String username) {
+    public String editUser( @PathVariable("username") String username,Model model) {
 //what i need to do//user//roles//users
     //user object    ${user}
    //     model.addAttribute("user", new UserDTO());   im gonna see empty//there needs to be object but what it is?
@@ -55,8 +55,8 @@ userService.update(user);
 return "redirect:/user/create";
     }
 
-    @GetMapping("/delete{username}")
-    public String deleteUser(@PathVariable String username ){
+    @GetMapping("/delete/{username}")
+    public String deleteUser( @PathVariable("username") String username ){
 
         userService.deleteById(username);
         return "redirect:/user/create";
