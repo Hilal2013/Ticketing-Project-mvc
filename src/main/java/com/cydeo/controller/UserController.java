@@ -5,10 +5,7 @@ import com.cydeo.service.RoleService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/user")
@@ -37,6 +34,29 @@ public class UserController {
         userService.save(user);
         return "redirect:/user/create";
     }
+@GetMapping("/update/{username}")
+    public String editUser(Model model, @PathVariable String username) {
+//what i need to do//user//roles//users
+    //user object    ${user}
+   //     model.addAttribute("user", new UserDTO());   im gonna see empty//there needs to be object but what it is?
+        model.addAttribute("user",userService.findById(username));
+//username comes outside//Pathvariable//when update just retrieving just posting //GetMapping
+
+        //roles ${roles}
+    model.addAttribute("roles", roleService.findAll());
+    //users  ${users}
+    model.addAttribute("users", userService.findAll());
+        return "user/update";
+    }
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") UserDTO user){
+//i need to update that user
+userService.update(user);
+return "redirect:/user/create";
+    }
+
+
+
 
 
 }

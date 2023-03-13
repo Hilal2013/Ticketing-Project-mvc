@@ -28,5 +28,8 @@ public abstract class AbstractMapService<T, ID> {//template//I dont need object 
 map.remove(id);
     }
 
+void update(ID id,T object){
+        map.put(id,object);
+}
 
 }
