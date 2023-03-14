@@ -56,16 +56,16 @@ projectService.complete(projectService.findById(projectCode));
     return "redirect:/project/create";
 }
     @GetMapping("/update/{projectCode}")
-    public String editUser( @PathVariable("projectCode") String projectCode,Model model) {
+    public String editProject( @PathVariable("projectCode") String projectCode,Model model) {
 // we need to populate//all object field in the form
         model.addAttribute("project",userService.findById(projectCode));
         model.addAttribute("managers", userService.findMangers());
         model.addAttribute("projects", projectService.findAll());
-        return "project/update";
+        return "/project/update";
     }
     @PostMapping("/update")
-    public String updateUser(@ModelAttribute("project") ProjectDTO project){
-//i need to update that user
+    public String updateProject(@ModelAttribute("project") ProjectDTO project){
+//i need to update that project
         projectService.update(project);
         return "redirect:/project/create";
     }
