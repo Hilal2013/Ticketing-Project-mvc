@@ -64,7 +64,7 @@ projectService.complete(projectService.findById(projectCode));
         return "project/update";
     }
     @PostMapping("/update")
-    public String updateUser(@ModelAttribute("projet") ProjectDTO project){
+    public String updateUser(@ModelAttribute("project") ProjectDTO project){
 //i need to update that user
         projectService.update(project);
         return "redirect:/project/create";
