@@ -32,12 +32,12 @@
                                 <div class="panel-body">
 
                                     <!-- ------------------------FORM START----------------------------- -->
-                                    <form th:object="${project}" th:action="@{/project/update}" method="post">
+                                    <form th:action="@{/project/update}" method="post" th:object="${project}">
                                         <div class="row">
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="projectname" class="col-form-label">Project Name</label>
-                                                    <input th:field="*{projectName}" id="projectname" type="text" class="form-control" readonly placeholder="project name">
+                                                    <input id="projectname" th:field="*{projectName}" type="text" class="form-control" placeholder="project name">
                                                 </div>
                                             </div>
                                         </div>
@@ -45,7 +45,7 @@
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="projectcode" class="col-form-label">Project Code</label>
-                                                    <input th:field="*{projectCode}" id="projectcode" type="text" class="form-control" placeholder="project code">
+                                                    <input th:field="*{projectCode}" id="projectcode" type="text" class="form-control" readonly placeholder="project code">
                                                 </div>
                                             </div>
                                         </div>
