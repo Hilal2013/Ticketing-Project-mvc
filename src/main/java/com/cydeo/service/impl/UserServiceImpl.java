@@ -36,7 +36,7 @@ super.update(object.getUserName(),object);
 
 
     @Override
-    public List<UserDTO> findMangers() {
+    public List<UserDTO> findManagers() {
         //I need to get collection//and filter mechanism
         return super.findAll().stream().filter(user->user.getRole().getId()==2).collect(Collectors.toList());
     }

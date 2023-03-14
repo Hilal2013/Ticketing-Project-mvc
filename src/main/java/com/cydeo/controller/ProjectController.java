@@ -27,7 +27,7 @@ public class ProjectController {
 // i need one empty object
 model.addAttribute("project",new ProjectDTO());
 //I need manager list
-        model.addAttribute("managers", userService.findMangers());
+        model.addAttribute("managers", userService.findManagers());
                 model.addAttribute("projects",projectService.findAll());
         return "/project/create";
     }
@@ -56,17 +56,20 @@ projectService.complete(projectService.findById(projectCode));
     return "redirect:/project/create";
 }
     @GetMapping("/update/{projectCode}")
-    public String editProject( @PathVariable("projectCode") String projectCode,Model model) {
-// we need to populate//all object field in the form
-        model.addAttribute("project",userService.findById(projectCode));
-        model.addAttribute("managers", userService.findMangers());
-        model.addAttribute("projects", projectService.findAll());
+    public String editProject(@PathVariable("projectCode") String projectCode, Model model){
+
+        model.addAttribute("project",projectService.findById(projectCode));
+        model.addAttribute("managers",userService.findManagers());
+        model.addAttribute("projects",projectService.findAll());
+
         return "/project/update";
     }
+
     @PostMapping("/update")
     public String updateProject(@ModelAttribute("project") ProjectDTO project){
-//i need to update that project
+
         projectService.update(project);
+
         return "redirect:/project/create";
     }
 
