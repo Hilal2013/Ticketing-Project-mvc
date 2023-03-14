@@ -2,6 +2,7 @@ package com.cydeo.controller;
 
 import com.cydeo.bootstrap.DataGenerator;
 import com.cydeo.dto.ProjectDTO;
+import com.cydeo.dto.UserDTO;
 import com.cydeo.enums.Status;
 import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
@@ -54,6 +55,19 @@ public String completeProject( @PathVariable("projectCode") String projectCode){
 projectService.complete(projectService.findById(projectCode));
     return "redirect:/project/create";
 }
-
+    @GetMapping("/update/{projectCode}")
+    public String editUser( @PathVariable("projectCode") String projectCode,Model model) {
+// we need to populate//all object field in the form
+        model.addAttribute("project",userService.findById(projectCode));
+        model.addAttribute("managers", userService.findMangers());
+        model.addAttribute("projects", projectService.findAll());
+        return "project/update";
+    }
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("projet") ProjectDTO project){
+//i need to update that user
+        projectService.update(project);
+        return "redirect:/project/create";
+    }
 
 }
