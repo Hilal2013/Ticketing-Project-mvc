@@ -47,6 +47,13 @@ return "redirect:/project/create";
 return "redirect:/project/create";
     }
 
+    @GetMapping("/complete/{projectCode}")//which object you completing updating how backend will know
+public String completeProject( @PathVariable("projectCode") String projectCode){
+//change status for complete ->do you have service?->I dont have //so create
+// go to service(you trying do smthing in controller and you want to change sthing in data base//)
+projectService.complete(projectService.findById(projectCode));
+    return "redirect:/project/create";
+}
 
 
 }
