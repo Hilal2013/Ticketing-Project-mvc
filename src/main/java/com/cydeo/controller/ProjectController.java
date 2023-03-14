@@ -26,7 +26,7 @@ public class ProjectController {
 // i need one empty object
 model.addAttribute("project",new ProjectDTO());
 //I need manager list
-        model.addAttribute("managers", userService.findAll());
+        model.addAttribute("managers", userService.findMangers());
                 model.addAttribute("projects",projectService.findAll());
         return "/project/create";
     }
