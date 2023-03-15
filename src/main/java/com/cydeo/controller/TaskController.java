@@ -86,6 +86,28 @@ model.addAttribute("tasks",taskService.findAllTasksByStatusIsNot(Status.COMPLETE
         return"task/pending-tasks";
 }
 
+    @GetMapping("/employee/edit/{id}")
+    public String employeeEditTask(@PathVariable("id") Long id, Model model) {
+
+        model.addAttribute("task", taskService.findById(id));//not new task
+//        model.addAttribute("projects", projectService.findAll());//I should n be able to these dropdowns
+//        model.addAttribute("employees", userService.findEmployees());
+        model.addAttribute("statuses", Status.values());
+        model.addAttribute("tasks", taskService.findAllTasksByStatusIsNot(Status.COMPLETE));
+
+        return "/task/status-update";//i cannot redirect:/task/create
+
+    }
+    @PostMapping("/employee/update/{id}")
+    public String employeeUpdateTask (TaskDTO task){
+
+
+        taskService.updateStatus(task);
+
+        return "redirect:/task/employee/pending-tasks";
+    }
+
+
 
     @GetMapping("/employee/archive")
     public String employeeArchivedTasks(Model model) {
