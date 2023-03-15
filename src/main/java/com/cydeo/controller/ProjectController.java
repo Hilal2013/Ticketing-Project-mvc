@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
@@ -72,5 +74,17 @@ projectService.complete(projectService.findById(projectCode));
 
         return "redirect:/project/create";
     }
+@GetMapping("/manager/project-status")
+    public String getProjectByManager(Model model){
+UserDTO manager=userService.findById("john@cydeo.com");//this is hard code //but now we dont have security.
+    //we need to see projects belongs to this manger//do i have any service?
+    List<ProjectDTO> projects=projectService.getCountedListOfProjectDTO(manager);
+//go to user ser service find specific manager by id(username/email) and then got the object.and pass this object to my service
+
+model.addAttribute("projects",projects);
+        return "manager/project-status";
+}
+
+
 
 }
