@@ -85,6 +85,12 @@ model.addAttribute("projects",projects);
         return "manager/project-status";
 }
 
+@GetMapping("/manager/complete/{projectCode}")
+    public String completeStatus(@PathVariable("projectCode")String projectCode){
+
+        return "redirect:";
+}
+
 
 
 }

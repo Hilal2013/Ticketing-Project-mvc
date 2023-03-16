@@ -74,10 +74,10 @@ object.setProjectStatus(findById(object.getProjectCode()).getProjectStatus());
                 .map(project->{
                    // int completeTaskCount=5; how im gonna find?
                   //  int unfinishedTaskCount=3;
-                    //All the tasks belongs to this project//dont gorget TaskService injection
+                    //All the tasks belongs to this project//dont forget TaskService injection
                     //i dont want to see all tasks just i want task belongs to this manger
                     List<TaskDTO> taskList = taskService.findTasksByManager(manager);
-                    //now tasks can be open,completed,unfineshed. I need to figure out completed and unfinished ones
+                    //now tasks can be open,completed,unfinished. I need to figure out completed and unfinished ones
                 //and but this manager has one more than projects//two filtering//count is returning long cast to int
                     int completeTaskCount= (int) taskList.stream()
                             .filter(t->t.getProject().equals(project)&& t.getTaskStatus().equals(Status.COMPLETE)).count();
