@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 @NoArgsConstructor
 public class UserDTO {
     @NotBlank
-    @Size(max=15,min=12)
+    @Size(max=15,min=2)
     private String firstName;
     @NotBlank
     @Size(max=15,min=12)
